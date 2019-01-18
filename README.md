@@ -4,6 +4,11 @@ Working with column position instead of column names.
     Working with column position instead of column names
 
     I need to rename the variables based on column position.
+    
+    See simpler solution on end by
+
+    Bartosz Jablonski
+    yabwon@gmail.com
 
     I inherited a dozen SAS tables from excel that have the same layout
     but the column names are not the same. There three columns.
@@ -124,5 +129,72 @@ Working with column position instead of column names.
 
     Output see above;
     =================
+
+
+
+    *____             _
+    | __ )  __ _ _ __| |_
+    |  _ \ / _` | '__| __|
+    | |_) | (_| | |  | |_
+    |____/ \__,_|_|   \__|
+
+    ;
+
+    See simpler solution on end by
+
+    Bartosz Jablonski
+    yabwon@gmail.com
+
+    I think natural behavior of proc SQL's "union all"
+    statement + empty shell dataset can do the job;
+
+    all the best
+    Bart
+
+    /*code*/
+    data hav_1;
+
+      set sashelp.class(obs=3 keep=name age sex rename=(
+        name=nam_12_30_2018_03_04_53
+        sex=sex_12_30_2018_03_04_53
+        age=age_12_30_2018_03_04_53));
+
+    run;quit;
+
+    data hav_2;
+
+      set sashelp.class(obs=3 keep=name age sex rename=(
+        name=nam_1_30_2019_05_07_13
+        sex=sex_1_30_2019_05_07_13
+        age=age_1_30_2019_05_07_13));
+
+    run;quit;
+
+    data hav_3;
+
+      set sashelp.class(obs=3 keep=name age sex rename=(
+        name=xxxxxxxxx1
+        sex=yyyyyyyyyyyy2
+        age=zzzzzzzzz3));
+
+    run;quit;
+
+    data shell;
+    set sashelp.class(keep=name age sex);
+    stop;
+    run;
+
+    proc sql;
+    create table want as
+    select * from shell
+    union all
+    select * from hav_1
+    union all
+    select * from hav_2
+    union all
+    select * from hav_3
+    ;
+    quit;
+
 
 
