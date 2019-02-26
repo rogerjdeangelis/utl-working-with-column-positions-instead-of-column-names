@@ -14,7 +14,12 @@ Working with column position instead of column names.
                                                                                                                 
     see github and below                                                                                        
     http://tinyurl.com/ycqymkrl                                                                                 
-    https://github.com/rogerjdeangelis/utl-working-with-column-positions-instead-of-column-names                
+    https://github.com/rogerjdeangelis/utl-working-with-column-positions-instead-of-column-names    
+    
+    SAS Forum:                                                                  
+    http://tinyurl.com/y2zyn957                                                 
+    https://communities.sas.com/t5/SAS-Programming/Rename-columns/m-p/538558    
+
                                                                                                                 
     Bartosz Jablonski                                                                                           
     yabwon@gmail.com                                                                                            
